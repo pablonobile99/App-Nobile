@@ -33,12 +33,12 @@ export default function App() {
   const [textItem, setTextItem] = useState("");
 
   const handleChangeText = (text) => {
-    console.log(text)
     setTextItem(text)
   }
 
   const addItem = () => {
     console.log("add")
+    console.log(textItem)
     setItemList(currentValue => [...currentValue, { id: Math.random().toString(), value: textItem }])
     setTextItem("")
   }
