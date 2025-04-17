@@ -1,0 +1,17 @@
+export const productos = [
+    { id: 1, value: "objeto 1" },
+    { id: 2, value: "objeto 2" },
+    { id: 3, value: "objeto 3" },
+    { id: 4, value: "objeto 4" },
+    { id: 5, value: "objeto 5" },
+    { id: 6, value: "objeto 6" },
+    { id: 7, value: "objeto 7" },
+    { id: 8, value: "objeto 8" },
+    { id: 9, value: "objeto 9" },
+    { id: 10, value: "objeto 10" },
+    { id: 11, value: "objeto 11" },
+    { id: 12, value: "objeto 12" },
+    { id: 13, value: "objeto 13" },
+    { id: 14, value: "objeto 14" },
+    { id: 15, value: "objeto 15" },
+]

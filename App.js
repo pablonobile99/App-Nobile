@@ -1,25 +1,9 @@
-import { useState } from 'react'
-import { Button, Image, Text, TextInput, View, StyleSheet, ScrollView, FlatList, TouchableOpacity, Alert, Modal } from 'react-native'
+import { useState } from 'react';
+import { Button, Image, Text, TextInput, View, StyleSheet, ScrollView, FlatList, TouchableOpacity, Alert, Modal } from 'react-native';
+import { globalStyles } from './styles/globalStyles';
+import { productos } from './asynmock';
 
-
-const productos = [
-  { id: 1, value: "objeto 1" },
-  { id: 2, value: "objeto 2" },
-  { id: 3, value: "objeto 3" },
-  { id: 4, value: "objeto 4" },
-  { id: 5, value: "objeto 5" },
-  { id: 6, value: "objeto 6" },
-  { id: 7, value: "objeto 7" },
-  { id: 8, value: "objeto 8" },
-  { id: 9, value: "objeto 9" },
-  { id: 10, value: "objeto 10" },
-  { id: 11, value: "objeto 11" },
-  { id: 12, value: "objeto 12" },
-  { id: 13, value: "objeto 13" },
-  { id: 14, value: "objeto 14" },
-  { id: 15, value: "objeto 15" },
-]
-
+import "./global.css";
 
 export default function App() {
   let estiloTexto = {
@@ -29,6 +13,7 @@ export default function App() {
     width: 200,
     height: 200,
   }
+
 
   const [textItem, setTextItem] = useState("");
 
@@ -57,6 +42,7 @@ export default function App() {
   const handleCancelModal = (item) => {
     console.log("cancelado")
     setModalVisible(false)
+    Alert.alert("Cancelado");
   }
 
   const [itemSelected, setItemSelected] = useState({})
@@ -68,8 +54,10 @@ export default function App() {
     setModalVisible(false)
   }
 
+
+
   return (
-    <View style={styles.conteiner}>
+    <View style={globalStyles.conteiner}>
       {/* <View style={{ height: 200, backgroundColor: 'blue' }}>
         <View style={{ height: 100, backgroundColor: 'red' }}>
           <Text style={estiloTexto}> ASDASDASDASD </Text>
@@ -86,7 +74,7 @@ export default function App() {
       <TextInput
         value={textItem}
         onChangeText={handleChangeText}
-        style={styles.input}
+        style={globalStyles.input}
       />
 
       <Button title='Agregar' color="red" onPress={addItem} />
@@ -95,7 +83,7 @@ export default function App() {
       {/* <ScrollView>
         {
           itemList.map(item => (
-            <View style={styles.itemBlockConteiner}>
+            <View style={globalStyles.itemBlockConteiner}>
               <Text key={item.id}>
                 {item.value}
               </Text>
@@ -103,15 +91,14 @@ export default function App() {
           ))
         }
       </ScrollView> */}
+      
 
-
-
-      <View style={styles.lista}>
+      <View style={globalStyles.lista}>
         <FlatList
           keyExtractor={(producto) => producto.id.toString()}
           data={itemList}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => handleModal(item)} style={styles.itemBlockConteiner}>
+            <TouchableOpacity onPress={() => handleModal(item)} style={globalStyles.itemBlockConteiner}>
               <Text>
                 {item.value}
               </Text>
@@ -120,21 +107,21 @@ export default function App() {
         />
       </View>
       <Modal visible={modalVisible} animationType='slide' transparent={true}>
-        <View style={styles.modalContainer}>
+        <View style={globalStyles.modalContainer}>
           <View>
-            <Text style={styles.textContainer}>
+            <Text style={globalStyles.textContainer}>
               Estas seguro de borrar?
             </Text>
           </View>
           <View>
-            <Text style={styles.textContainer}>
+            <Text style={globalStyles.textContainer}>
               Producto: {itemSelected.value}
             </Text>
-            <Text style={styles.textContainer}>
+            <Text style={globalStyles.textContainer}>
               ID: {itemSelected.id}
             </Text>
           </View>
-          <View style={styles.btnContainer}>
+          <View style={globalStyles.btnContainer}>
             <Button title='Borrar' color="red" onPress={handleDeleteModal} />
             <Button title='Cancelar' color="green" onPress={handleCancelModal} />
           </View>
@@ -144,52 +131,3 @@ export default function App() {
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  conteiner: {
-    flex: 1,
-    backgroundColor: "green",
-    padding: 50,
-    borderRadius: 15,
-    overflow: "hidden",
-    marginTop: 50
-  },
-  input: {
-    backgroundColor: "white"
-  },
-  itemBlockConteiner: {
-    height: 70,
-    width: 200,
-    margin: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  lista: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  btnContainer: {
-    flexDirection: "row",
-    gap: 20,
-  },
-  textContainer: {
-    fontWeight: "Bold",
-  },
-  modalContainer: {
-    backgroundColor: "white",
-    width: "80%",
-    height: "20%",
-    marginVertical: "40%",
-    marginHorizontal: "10%",
-    alignContent: "center",
-    justifyContent: "center",
-    gap: 20,
-    paddingVertical: 20,
-    borderRadius: 8,
-  },
-})
