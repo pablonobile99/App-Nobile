@@ -1,29 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
-/* import React from 'react'
 
-const globalStyles = () => {
-  return (
-    <View>
-      <Text>globalStyles</Text>
-    </View>
-  )
-}
-
-export default globalStyles
-
-const styles = StyleSheet.create({})
- */
 export const globalStyles = StyleSheet.create({
     conteiner: {
       flex: 1,
-      backgroundColor: "green",
-      padding: 50,
+    },
+    conteinerbackGround: {
+      flex: 1,
+      backgroundColor: "blue",
       borderRadius: 15,
+      paddingVertical: 80,
+      paddingHorizontal: 50,
       overflow: "hidden",
-      marginVertical: 50,
-      marginHorizontal: 15,
-      borderWidth: 5,
-      borderColor: "#047723"
+      /* marginVertical: 50,
+      marginHorizontal: 15, */
+      /* borderWidth: 5,
+      borderColor: "#047723" */
     },
     input: {
       backgroundColor: "white"

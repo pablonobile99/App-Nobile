@@ -1,9 +1,16 @@
 import { useState } from 'react';
-import { Button, Image, Text, TextInput, View, StyleSheet, ScrollView, FlatList, TouchableOpacity, Alert, Modal } from 'react-native';
+import { Button, Image, Text, TextInput, View, StyleSheet, ScrollView, FlatList, TouchableOpacity, Alert, Modal, ImageBackground } from 'react-native';
 import { globalStyles } from './styles/globalStyles';
 import { productos } from './asynmock';
 
 import "./global.css";
+
+import React from 'react';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+
+const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
+
+
 
 export default function App() {
   let estiloTexto = {
@@ -58,76 +65,63 @@ export default function App() {
 
   return (
     <View style={globalStyles.conteiner}>
-      {/* <View style={{ height: 200, backgroundColor: 'blue' }}>
-        <View style={{ height: 100, backgroundColor: 'red' }}>
-          <Text style={estiloTexto}> ASDASDASDASD </Text>
+
+      <ImageBackground source={require("./assets/fondo.png")} resizeMode="cover" style={globalStyles.conteinerbackGround}>
+        <TextInput
+          value={textItem}
+          onChangeText={handleChangeText}
+          style={globalStyles.input}
+        />
+
+        <Button title='Agregar' color="blue" onPress={addItem} />
+
+
+        <View style={globalStyles.lista}>
+
+          <FlatList
+            keyExtractor={(producto) => producto.id.toString()}
+            data={itemList}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => handleModal(item)} style={globalStyles.itemBlockConteiner}>
+                <Text>
+                  {item.value}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
         </View>
-        <TextInput value={"texto para el imput"} placeholder='asd'/>
-      </View>
-
-      <Button title='PANQUEQUES' ></Button>
-
-      <Image source={require("./assets/icon.png")} style={img}></Image>
-      <Image source={{uri:"https://nancy.mx/cdn/shop/files/889E5B31-329F-4A46-A441-AE19FC8C7D02_cb622dc0-6513-4f9f-805d-a06c0e2c340d.jpg?v=1700864680&width=1445"}} style={img}></Image>
- */}
-
-      <TextInput
-        value={textItem}
-        onChangeText={handleChangeText}
-        style={globalStyles.input}
-      />
-
-      <Button title='Agregar' color="red" onPress={addItem} />
-
-
-      {/* <ScrollView>
-        {
-          itemList.map(item => (
-            <View style={globalStyles.itemBlockConteiner}>
-              <Text key={item.id}>
-                {item.value}
+        <Modal visible={modalVisible} animationType='slide' transparent={true}>
+          <View style={globalStyles.modalContainer}>
+            <View>
+              <Text style={globalStyles.textContainer}>
+                Estas seguro de borrar?
               </Text>
             </View>
-          ))
-        }
-      </ScrollView> */}
-      
-
-      <View style={globalStyles.lista}>
-        <FlatList
-          keyExtractor={(producto) => producto.id.toString()}
-          data={itemList}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => handleModal(item)} style={globalStyles.itemBlockConteiner}>
-              <Text>
-                {item.value}
+            <View>
+              <Text style={globalStyles.textContainer}>
+                Producto: {itemSelected.value}
               </Text>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <Modal visible={modalVisible} animationType='slide' transparent={true}>
-        <View style={globalStyles.modalContainer}>
-          <View>
-            <Text style={globalStyles.textContainer}>
-              Estas seguro de borrar?
-            </Text>
-          </View>
-          <View>
-            <Text style={globalStyles.textContainer}>
-              Producto: {itemSelected.value}
-            </Text>
-            <Text style={globalStyles.textContainer}>
-              ID: {itemSelected.id}
-            </Text>
-          </View>
-          <View style={globalStyles.btnContainer}>
-            <Button title='Borrar' color="red" onPress={handleDeleteModal} />
-            <Button title='Cancelar' color="green" onPress={handleCancelModal} />
-          </View>
+              <Text style={globalStyles.textContainer}>
+                ID: {itemSelected.id}
+              </Text>
+            </View>
+            <View style={globalStyles.btnContainer}>
+              <Button title='Borrar' color="red" onPress={handleDeleteModal} />
+              <Button title='Cancelar' color="green" onPress={handleCancelModal} />
+            </View>
 
-        </View>
-      </Modal>
+          </View>
+        </Modal>
+      </ImageBackground>
+
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
