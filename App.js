@@ -8,9 +8,6 @@ import "./global.css";
 import React from 'react';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
-const image = { uri: 'https://legacy.reactjs.org/logo-og.png' };
-
-
 
 export default function App() {
   let estiloTexto = {
@@ -20,6 +17,27 @@ export default function App() {
     width: 200,
     height: 200,
   }
+
+  const backFondos = [
+    {id: 1, url:"./assets/fondo.png"},
+    {id: 2, url:"./assets/fondoAzul.png"},
+    {id: 3, url:"./assets/fondo.png"},
+  ]
+
+  const [imgFondo, setImgFondo] = useState(require("./assets/fondo.png"));
+  const [stateFondo, setStateFondo] = useState(1)
+
+  const manejadorFondo = () => {
+    if (stateFondo == 1){
+      setImgFondo(require("./assets/fondoAzul.png"))
+      setStateFondo(2)
+    }
+    if (stateFondo == 2){
+      setImgFondo(require("./assets/fondo.png"))
+      setStateFondo(1)
+    }
+  }
+
 
 
   const [textItem, setTextItem] = useState("");
@@ -66,12 +84,19 @@ export default function App() {
   return (
     <View style={globalStyles.conteiner}>
 
-      <ImageBackground source={require("./assets/fondo.png")} resizeMode="cover" style={globalStyles.conteinerbackGround}>
+      <ImageBackground source={imgFondo} resizeMode="cover" style={globalStyles.conteinerbackGround}>
         <TextInput
           value={textItem}
           onChangeText={handleChangeText}
           style={globalStyles.input}
         />
+
+        <TouchableOpacity onPress={manejadorFondo} style={globalStyles.btnFondo}>
+          <Text>
+            FONDO
+          </Text>
+        </TouchableOpacity>
+
 
         <Button title='Agregar' color="blue" onPress={addItem} />
 

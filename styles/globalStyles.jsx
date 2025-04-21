@@ -53,4 +53,17 @@ export const globalStyles = StyleSheet.create({
       paddingVertical: 20,
       borderRadius: 8,
     },
+    btnFondo: {
+      backgroundColor: "white",
+      width: 60,
+      height: 40,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 15,
+      borderWidth: 1,
+      borderColor: "grey",
+      position: "absolute",
+      right: 30,
+      top: 30,
+    }
   })
