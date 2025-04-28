@@ -7,32 +7,22 @@ import "./global.css";
 
 import React from 'react';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import Base from './componentes/Base';
+
+
 
 
 export default function App() {
-  let estiloTexto = {
-    color: 'green'
-  }
-  let img = {
-    width: 200,
-    height: 200,
-  }
 
-  const backFondos = [
-    {id: 1, url:"./assets/fondo.png"},
-    {id: 2, url:"./assets/fondoAzul.png"},
-    {id: 3, url:"./assets/fondo.png"},
-  ]
-
-  const [imgFondo, setImgFondo] = useState(require("./assets/fondo.png"));
+  /* const [imgFondo, setImgFondo] = useState(require("./assets/fondo.png"));
   const [stateFondo, setStateFondo] = useState(1)
 
   const manejadorFondo = () => {
-    if (stateFondo == 1){
+    if (stateFondo == 1) {
       setImgFondo(require("./assets/fondoAzul.png"))
       setStateFondo(2)
     }
-    if (stateFondo == 2){
+    if (stateFondo == 2) {
       setImgFondo(require("./assets/fondo.png"))
       setStateFondo(1)
     }
@@ -77,14 +67,21 @@ export default function App() {
     setItemList(filter)
     console.log("borrado")
     setModalVisible(false)
-  }
+  } */
+
+
+    
 
 
 
   return (
     <View style={globalStyles.conteiner}>
-
-      <ImageBackground source={imgFondo} resizeMode="cover" style={globalStyles.conteinerbackGround}>
+      {/* <View style={{flex:1}}>
+        <Base>
+          <Text>asd</Text>
+        </Base>
+      </View> */}
+      {/* <ImageBackground source={imgFondo} resizeMode="cover" style={globalStyles.conteinerbackGround}>
         <TextInput
           value={textItem}
           onChangeText={handleChangeText}
@@ -137,8 +134,9 @@ export default function App() {
 
           </View>
         </Modal>
-      </ImageBackground>
+      </ImageBackground> */}
 
+      
     </View>
   );
 }
