@@ -1,5 +1,25 @@
 import { StyleSheet, Text, View } from 'react-native'
 
+export const basicStyles = StyleSheet.create({
+  conteiner: {
+    flex: 1,
+    backgroundColor: "#ccfa81",
+  },
+  conteinerbackGround: {
+    flex: 1,
+    backgroundColor: "blue",
+    borderRadius: 15,
+    paddingVertical: 80,
+    paddingHorizontal: 50,
+    overflow: "hidden",
+    /* marginVertical: 50,
+    marginHorizontal: 15, */
+    /* borderWidth: 5,
+    borderColor: "#047723" */
+  },
+})
+
+
 export const globalStyles = StyleSheet.create({
     conteiner: {
       flex: 1,

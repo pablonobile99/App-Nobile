@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Image, Text, TextInput, View, StyleSheet, ScrollView, FlatList, TouchableOpacity, Alert, Modal, ImageBackground } from 'react-native';
-import { globalStyles } from './styles/globalStyles';
+import { basicStyles, globalStyles } from './styles/globalStyles';
 import { productos } from './asynmock';
 
 import "./global.css";
@@ -8,8 +8,7 @@ import "./global.css";
 import React from 'react';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import Base from './componentes/Base';
-
-
+import FondoManejador from './componentes/FondoManejador';
 
 
 export default function App() {
@@ -69,13 +68,13 @@ export default function App() {
     setModalVisible(false)
   } */
 
+  
 
-    
-
-
+  /*---------- INICIO APP NUEVA -------------------------------------- */
+  
 
   return (
-    <View style={globalStyles.conteiner}>
+    <View style={basicStyles.conteiner}>
       {/* <View style={{flex:1}}>
         <Base>
           <Text>asd</Text>
@@ -135,16 +134,12 @@ export default function App() {
           </View>
         </Modal>
       </ImageBackground> */}
-
+      <FondoManejador>
+        <Text>
+          asdasdasdasdasda
+        </Text>
+      </FondoManejador>
       
     </View>
   );
 }
-
-
-const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
